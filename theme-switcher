@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+
+## Alacritty
+
+# Where the script root is located
+ROOT_FOLDER=~/theme-switcher/
+
+# Theme folder path
+THEME_FOLDER=~/.config/alacritty/themes/themes/
+
+# Night theme path
+# You can set the path to your own theme file
+NIGHT_THEME="PATH TO dracula.toml"
+
+# Day theme path
+# You can set the path to your own theme file
+DAY_THEME="PATH TO ayu_light.toml"
+
+# Pass theme name as argument
+NAME_THEME="PATH TO "$2".toml"
+
+# Location of Alacritty config file
+ALACRITTY_CONFIG=~/.config/alacritty/alacritty.toml
+
+echo "Night theme path: $NIGHT_THEME"
+echo "Day theme path: $DAY_THEME"
+
+theme_name="$1"
+
+if [ -z "$theme_name" ]; then
+	echo "No argument provided."
+	echo "Usage: theme-switcher [night|day]"
+	echo "Usage: theme-switcher [name] [theme_name]"
+	exit 1
+fi
+
+if [ "$theme_name" = "day" ]; then
+	echo "import = [ \"$DAY_THEME\" ]" >"$ROOT_FOLDER"alacritty.toml
+fi
+
+if [ "$theme_name" = "night" ]; then
+	echo "import = [ \"$NIGHT_THEME\" ]" >"$ROOT_FOLDER"alacritty.toml
+fi
+
+if [ "$theme_name" = "name" ]; then
+	echo "import = [ \"$NAME_THEME\" ]" >"$ROOT_FOLDER"alacritty.toml
+fi
+
+if [ "$theme_name" = "list" ]; then
+	find "$THEME_FOLDER"*.toml -printf "> %f \n"
+fi
+touch "$ALACRITTY_CONFIG"
