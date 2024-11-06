@@ -1,5 +1,6 @@
 # alacritty-theme-switcher
-Simple script to change your alacritty terminal theme
+
+Simple script to change your alacritty terminal theme.
 
 ## Usage
 
@@ -19,10 +20,10 @@ import = [
 
 6. Install the script somewhere in your $PATH or set it as alias. 
 
+
 6. You can quickly switch between themes by running the following command:
 ```bash
 theme-switcher day 
 theme-switcher night
 theme-switcher name <theme_name>
-```
 ```
